@@ -2,6 +2,7 @@ use std::{any::{Any, TypeId}, collections::HashMap};
 
 pub mod texture;
 pub mod sprite;
+pub mod shader;
 pub struct Resources{
     resource_names: HashMap<String,ResourceKey>,
     resources: HashMap<TypeId,Vec<Box<dyn Any>>>,
