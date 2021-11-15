@@ -1,7 +1,5 @@
 use std::{collections::HashMap, ffi::CString, ops::Deref, rc::Rc};
 
-use gl::types::GLuint;
-
 pub enum ShaderDataType{
     Int,
     Float,
@@ -38,7 +36,7 @@ impl RawGlShader{
         })
     }
 
-    fn create_program(vertex: GLuint, fragment: GLuint) -> Result<GLuint,String>{
+    fn create_program(vertex: gl::types::GLuint, fragment: gl::types::GLuint) -> Result<gl::types::GLuint,String>{
         unsafe{
             let program = gl::CreateProgram();
 
@@ -64,7 +62,6 @@ impl RawGlShader{
                     gl::GetActiveUniformName(program,i,len,&mut _outlen, buf.as_mut_ptr());
                     String::from(CString::from_raw(buf.as_mut_ptr()).to_str().unwrap())
                 };
-                
             }
             
 
