@@ -2,6 +2,7 @@ use crate::resource::texture::GlTexture;
 
 use super::Sprite;
 
+#[derive(Default)]
 pub struct UvSprite{
     min_x: f32,
     min_y: f32,

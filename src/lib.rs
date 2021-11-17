@@ -8,6 +8,9 @@ use winit::{event::{Event, WindowEvent}, event_loop::ControlFlow};
 pub mod resource;
 pub mod loader;
 pub mod window;
+pub mod components;
+pub mod systems;
+
 
 #[derive(Default)]
 pub struct RenderBuilderInfo{

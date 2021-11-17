@@ -1,8 +1,12 @@
-use std::rc::Rc;
+use std::{rc::Rc, sync::Arc};
 
+#[derive(Default)]
 struct RawGlTexture{
     id: gl::types::GLuint,
 }
+
+unsafe impl Send for RawGlTexture{}
+unsafe impl Sync for RawGlTexture{}
 
 impl RawGlTexture {
     fn from_data(width: u32, height: u32, data: Vec<u8>) -> Self{
@@ -60,15 +64,15 @@ impl Drop for RawGlTexture {
 ///
 /// Represents a gl texture
 /// It is safe to clone this texture due to the underlying data being ref_counted
-#[derive(Clone)]
+#[derive(Clone,Default)]
 pub struct GlTexture{
-    raw: Rc<RawGlTexture>
+    raw: Arc<RawGlTexture>
 }
 
 impl GlTexture{
     fn from_raw(raw: RawGlTexture) -> Self{
         Self{
-            raw: Rc::new(raw)
+            raw: Arc::new(raw)
         }
     }
 
