@@ -3,15 +3,16 @@ use std::{os::windows::thread, thread::spawn};
 use winit::{dpi::PhysicalSize, event::Event, event_loop::{ControlFlow, EventLoop}, window::WindowBuilder};
 
 pub struct WindowConfiguration{
-    width: usize,
-    height: usize,
-    title: String,
-    resizable: bool,
-    on_event: fn (&Event<()>) -> ()
+    pub width: usize,
+    pub height: usize,
+    pub title: String,
+    pub resizable: bool,
+    pub on_event: fn (&Event<()>) -> ()
 }
 
 pub fn initialize_threaded_window(config: WindowConfiguration){
-    spawn(move ||{
+   
+    
         let event_loop = EventLoop::new();
         let window = 
             WindowBuilder::new()
@@ -37,6 +38,4 @@ pub fn initialize_threaded_window(config: WindowConfiguration){
                 _ => ()
             }
         });
-    
-    });
 }
