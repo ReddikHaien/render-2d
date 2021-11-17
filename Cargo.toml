@@ -9,4 +9,5 @@ edition = "2021"
 gl = "0.14.0"
 lodepng = "3.4.6"
 winit = "0.25.0"
+raw-gl-context = "0.1.2"
 ecs-core = {path="../ecs-core"}
